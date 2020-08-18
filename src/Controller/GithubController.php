@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-//use Symfony\Component\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -24,8 +23,11 @@ class GithubController extends AbstractController
     {
     	$response = $this->client->request(
             'GET',
-	    'https://api.github.com/user/repos',
-	    [ 'auth_basic' => '%env(USERNAME)%:%env(PASSWORD)%' ]
+            'https://api.github.com/user/repos',
+            [
+                'auth_basic' => '%env(USERNAME)%:%env(PASSWORD)%',
+                //'headers'=>['Authorization' => 'token %env(GITHUB_API_TOKEN)']
+            ]
         );
 
         $statusCode = $response->getStatusCode();
