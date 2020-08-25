@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit Slave</title>
+
+{% block body %}
+    <h1>Edit Slave</h1>
+
+    {{ include('slave/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('slave_index') }}">back to list</a>
+
+    {{ include('slave/_delete_form.html.twig') }}
+{% endblock %}

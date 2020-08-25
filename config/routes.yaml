@@ -4,6 +4,9 @@ index:
 github:
     path: /github
     controller: App\Controller\GithubController::index
-storeToDatabases:
-    path: /store
-    controller: App\Controller\DatabasesController::index
+master:
+    path: /master
+    controller: App\Controller\MasterController::index
+slave:
+    path: /slave
+    controller: App\Controller\SlaveController::index

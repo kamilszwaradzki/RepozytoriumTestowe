@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<title>Slave</title>
+
+{% block body %}
+    <h1>Slave</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ slave.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ slave.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('slave_index') }}">back to list</a>
+
+    <a href="{{ path('slave_edit', {'id': slave.id}) }}">edit</a>
+
+    {{ include('slave/_delete_form.html.twig') }}
+{% endblock %}

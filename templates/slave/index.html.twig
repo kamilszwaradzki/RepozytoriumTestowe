@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<title>Slave index</title>
+
+{% block body %}
+    <h1>Slave index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for slave in slaves %}
+            <tr>
+                <td>{{ slave.id }}</td>
+                <td>{{ slave.name }}</td>
+                <td>
+                    <a href="{{ path('slave_show', {'id': slave.id}) }}">show</a>
+                    <a href="{{ path('slave_edit', {'id': slave.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('slave_new') }}">Create new</a>
+{% endblock %}
