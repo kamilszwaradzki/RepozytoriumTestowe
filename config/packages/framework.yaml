@@ -17,7 +17,7 @@ framework:
                 base_uri: 'https://api.github.com'
                 headers:
                     Accept: 'application/vnd.github.v3+json'
-                    auth_basic: '%env(USERNAME)%:%env(PASSWORD)%'
+                    auth_basic: '%env(string:GITHUB_USERNAME)%:%env(string:GITHUB_PASSWORD)%'
                     #Authorization: 'token %env(GITHUB_API_TOKEN)%'
                 
                     

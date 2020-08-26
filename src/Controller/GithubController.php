@@ -25,8 +25,7 @@ class GithubController extends AbstractController
             'GET',
             'https://api.github.com/user/repos',
             [
-                'auth_basic' => '%env(USERNAME)%:%env(PASSWORD)%',
-                //'headers'=>['Authorization' => 'token %env(GITHUB_API_TOKEN)']
+                'auth_basic' => $_ENV['GITHUB_USERNAME'].':'.$_ENV['GITHUB_PASSWORD'],
             ]
         );
 
@@ -37,16 +36,18 @@ class GithubController extends AbstractController
         $content = $response->getContent();
         // $content = '{"id":521583, "name":"symfony-docs", ...}'
         $content = $response->toArray();
-	// $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
-
+        // $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
+        //return $content;
+/*
 	return new Response(
-            '<html><body>My Repos: <br/>'.$response->getContent().'</body></html>'
+            '<html><body> My Repos: <br/>'.$response->getContent().'</body></html>'
         );
-
-	/*
+*/
+	
 		return $this->render('github/index.html.twig', [
-		    'controller_name' => 'GithubController',
+            'controller_name' => 'GithubController',
+            'repositories' => $content,
 	    ]);
-	*/
+	
     }
 }
